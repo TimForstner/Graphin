@@ -1,4 +1,4 @@
-package graphin;
+package kernel;
 
 import java.util.Scanner;
 
@@ -101,6 +101,10 @@ public class Graph_Main {
 			System.out.println("Error on getSDPQ");
 		}
 		return erg;
+	}
+	
+	public void test() {
+		System.out.println("Test");
 	}
 	
 
