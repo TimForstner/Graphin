@@ -1,7 +1,7 @@
 package kernel;
 
-import java.util.Scanner;
 import javax.swing.JFrame;
+
 import graphics.Zeichnung;
 
 public class Graph_Main {
@@ -10,6 +10,18 @@ public class Graph_Main {
 		
 		Cpu cpu = new Cpu();
 		cpu.funktion();
+		
+		 JFrame jf = new JFrame("Graph");
+	        Zeichnung l = new Zeichnung();
+	       
+	        jf.setSize(515, 540);
+	        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        jf.setLayout(null);
+	        jf.setLocationRelativeTo(null);
+	        jf.setContentPane(l);
+	        jf.setBounds(0, 0, 505, 530);
+	       
+	        jf.setVisible(true);
 		
 //		wertetabelle[0][0] = -5;
 //		wertetabelle[1][0] = -4;
