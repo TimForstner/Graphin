@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-import javax.jws.WebResult;
 import javax.swing.JLabel;
 
 public class Gui extends JLabel{
