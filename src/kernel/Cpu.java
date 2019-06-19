@@ -1,12 +1,17 @@
-package graphin;
+package kernel;
 
 import java.util.Scanner;
 
-public class Graph_Main {
-	
-	static float wertetabelle[][] = new float[11][2];
+import javax.swing.JFrame;
 
-	public static void main(String[] args) {
+import graphics.Zeichnung;
+
+public class Cpu {
+	
+	public static int wertetabelle[][] = new int[11][2];
+
+	
+	public void funktion() {
 		
 		// Einleitung
 		System.out.println("Hallo, dies ist ein Programm um eine Funktion grafisch in der Konsole abzubilden.");
@@ -24,20 +29,6 @@ public class Graph_Main {
 			wertebereichAb += zahlenAbstand;
 		}
 		
-//		wertetabelle[0][0] = -5;
-//		wertetabelle[1][0] = -4;
-//		wertetabelle[2][0] = -3;
-//		wertetabelle[3][0] = -2;
-//		wertetabelle[4][0] = -1;
-//		wertetabelle[5][0] = 0;
-//		wertetabelle[6][0] = 1;
-//		wertetabelle[7][0] = 2;
-//		wertetabelle[8][0] = 3;
-//		wertetabelle[9][0] = 4;
-//		wertetabelle[10][0] = 5;
-
-//	+++	1,8x+7x-3
-		
 		for (int i = 0; i < wertetabelle.length; i++) {
 			
 			String[] bearbFunktion = getBearbFunktion(i, funktion_raw, wertetabelle);
@@ -52,14 +43,26 @@ public class Graph_Main {
 			System.out.println("x= "+wertetabelle[i][0]+ " : y= "+wertetabelle[i][1]);
 		}
 		
+        JFrame jf = new JFrame("Graph");
+        Zeichnung l = new Zeichnung();
+       
+        jf.setSize(515, 540);
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jf.setLayout(null);
+        jf.setLocationRelativeTo(null);
+        jf.setContentPane(l);
+        jf.setBounds(0, 0, 505, 530);
+       
+        jf.setVisible(true);
+		
 		harald.close();
 	}
 	
 //	------------------------------ Funktion herrichten
 	
-	public static String[] getBearbFunktion(int i, String funktion_raw,float[][] wertetabelle) {
+	public static String[] getBearbFunktion(int i, String funktion_raw,int[][] wertetabelle2) {
 		
-		String x = wertetabelle[i][0] + "";
+		String x = wertetabelle2[i][0] + "";
 		String fMitPunkt = funktion_raw.replace(',', '.');
 		String fMitX = fMitPunkt.replaceAll("x", "@*@"+x+"!");
 		String[] rechung = fMitX.split("!");
@@ -73,7 +76,7 @@ public class Graph_Main {
 	
 //	----------------------------- SDPQ
 	
-	public static float getSDPQ(String[] sdpqArr) {
+	public static int getSDPQ(String[] sdpqArr) {
 		
 		float erg = 0;
 		
@@ -100,10 +103,12 @@ public class Graph_Main {
 			erg = Float.parseFloat(sdpqArr[0]);
 			System.out.println("Error on getSDPQ");
 		}
-		return erg;
+		return (int)erg;
 	}
 	
-
-	
+	public int[][] getWertetabelle(int[][] wertetabelle) {
+		return wertetabelle;
+		
+	}
 
 }
