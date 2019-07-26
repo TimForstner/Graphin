@@ -7,22 +7,26 @@ import java.util.regex.Pattern;
 
 public class QuadCore {
 	
-	public static int wertetabelle[][] = new int[11][2];
+	public static double wertetabelle[][] = new double[11][2];
 
 	
 	public void funktion() {
 		
+//		Quad Core ist die überholte Klasse von Cpu
+//		Berechung erfolgt mithilfe von Zerteilung des Strings durch regex
+		
 		// Einleitung
-		System.out.println("Hallo, dies ist ein Programm um eine Funktion grafisch in der Konsole abzubilden.");
+		//		1,8x+7x-3
+		System.out.println("Hallo, dies  ist ein Programm um eine Funktion grafisch in der Konsole abzubilden.");
 
 		Scanner harald = new Scanner(System.in);
 		System.out.println("Gib die Funktion ein im Format: ax^n + bx + c\nf(x): y= ");
 		String funktion_raw = harald.nextLine();
 		
 		System.out.println("Welchen Wertebereich(X) willst du abbilden. (Tipp: Der Wertebreich umfasst dann X bis X+zehn Zahlenabstände)\nX:_____");
-		int wertebereichAb = harald.nextInt();
+		double wertebereichAb = harald.nextDouble();
 		System.out.println("Und welchen Zahlenabstand möchtest du?\nZahlenabstand:_____");
-		int zahlenAbstand = harald.nextInt();
+		double zahlenAbstand = harald.nextDouble();
 		for (int i = 0; i<=10;i++) {
 			wertetabelle[i][0] = wertebereichAb;
 			wertebereichAb += zahlenAbstand;
@@ -45,9 +49,10 @@ public class QuadCore {
 		harald.close();
 	}
 	
+//			1,8^2x+7x-3
 //	------------------------------ Funktion herrichten
 	
-	public static String[] getBearbFunktion(int i, String funktion_raw,int[][] wertetabelle2) {
+	public static String[] getBearbFunktion(int i, String funktion_raw,double[][] wertetabelle2) {
 		
 		String x = wertetabelle2[i][0] + "";
 		String fMitPunkt = funktion_raw.replace(',', '.');
@@ -57,49 +62,51 @@ public class QuadCore {
 		if (matcher.find()) {
 			System.out.println("HIER: " + matcher.group());
 			String[] potenz = matcher.group().split("");
-			
-			
 		}
+		
 //		String fMitX = fMitPunkt.replaceAll("x^\\d", newChar)
 		String fMitX = fMitPunkt.replaceAll("x", "@*@"+x+"!");
 		String[] rechung = fMitX.split("!");
 		System.out.println(fMitX);
 		return rechung;
 		
-//		1,8x+7x-3
+//		1,8x^2+7x-3
 		
 	}
 	
+
+	
 //	----------------------------- SDPQ
 	
-	public static int getSDPQ(String[] sdpqArr) {
+	public static double getSDPQ(String[] sdpqArr) {
 		
-		float erg = 0;
+		double erg = 0;
 		
 		if(sdpqArr.length==1) {
-			erg = Float.parseFloat(sdpqArr[0]);
+			erg = Double.parseDouble(sdpqArr[0]);
 		}
 		else if(sdpqArr[1].equals("+")) {
-			erg = (Float.parseFloat(sdpqArr[0]) + Float.parseFloat(sdpqArr[2]));
+			erg = (Double.parseDouble(sdpqArr[0]) + Double.parseDouble(sdpqArr[2]));
 			
 		}
 		else if(sdpqArr[1].equals("-")) {
-			erg = (Float.parseFloat(sdpqArr[0]) - Float.parseFloat(sdpqArr[2]));
+			erg = (Double.parseDouble(sdpqArr[0]) - Double.parseDouble(sdpqArr[2]));
 			
 		}
 		else if(sdpqArr[1].equals("*")) {
-			erg = (Float.parseFloat(sdpqArr[0]) * Float.parseFloat(sdpqArr[2]));
+			erg = (Double.parseDouble(sdpqArr[0]) * Double.parseDouble(sdpqArr[2]));
 			
 		}
 		else if(sdpqArr[1].equals("/")) {
-			erg = (Float.parseFloat(sdpqArr[0]) / Float.parseFloat(sdpqArr[2]));
+			erg = (Double.parseDouble(sdpqArr[0]) / Double.parseDouble(sdpqArr[2]));
 			
 		}
 		else {
-			erg = Float.parseFloat(sdpqArr[0]);
+			erg = Double.parseDouble(sdpqArr[0]);
 			System.out.println("Error on getSDPQ");
 		}
-		return (int)erg;
+		System.out.println("Teilergebnis: "+erg);
+		return erg;
 	}
 	
 	public static int calculateFunction(String function_raw) {
@@ -118,6 +125,15 @@ public class QuadCore {
 	
 	public int[][] getWertetabelle(int[][] wertetabelle) {
 		return wertetabelle;
+		
+	}
+	
+	public double berechneFunktion() {
+		
+		String str = "1.3*4+3.4-2;"; 
+		double erg = 1.3*4+3.4-2;
+		System.out.println(erg);
+		return erg;
 		
 	}
 

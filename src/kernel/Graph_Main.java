@@ -6,9 +6,13 @@ import graphics.Zeichnung;
 
 public class Graph_Main {
 	
+//	Fehler bei kleiner Steigung
+//	Rechnung mit regex
+//	
+	
 	public static void main(String[] args) {
 		
-		Cpu cpu = new Cpu();
+		QuadCore cpu = new QuadCore();
 		cpu.funktion();
 		
 		 JFrame jf = new JFrame("Graph");
