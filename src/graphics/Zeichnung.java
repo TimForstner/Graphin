@@ -7,7 +7,9 @@ import java.awt.RenderingHints;
 
 import javax.swing.JLabel;
 
+import kernel.Coordinates;
 import kernel.Cpu;
+import kernel.QuadCore;
 
 public class Zeichnung extends JLabel{
 
@@ -37,25 +39,27 @@ public class Zeichnung extends JLabel{
 		// y
 		g.drawLine(10, 20*12+10, 490, 20*12+10);
 		
-
+		// paint the numbers
+		String[] tabelle = {"-12", "-10", "-8", "-6", "-4", "-2", " 0"," 2", " 4", " 6", " 8", "10", "12"};
+		for(int i = 0; i<130; i+=10) {
+			// x 
+			g.drawString(tabelle[i/10], (i/10)*39+10, 265);
+			if (tabelle[i/10] != " 0") {
+				// y
+				g.drawString(tabelle[12-i/10], 235, (i/10)*39+22);
+			}
+		}
 		
-//		for(int i = 0; i<130; i+=10) {
-//			// x 
-//			g.drawString(tabelle[i/10], (i/10)*39+10, 265);
-//			if (tabelle[i/10] != "0") {
-//				// y
-//				g.drawString(tabelle[12-i/10], 235, (i/10)*39+22);
-//			}
-//		}
-		g.setColor(Color.BLUE);
+		// building the black dots
+		g.setColor(Color.BLACK);
 		for (int i = 0; i<11; i++) {
-			g.drawRect((Cpu.wertetabelle[i][0]*20+250), (Cpu.wertetabelle[i][1]*20+250), 1, 1);
+			g.fillRect(Coordinates.xCorToPixl(QuadCore.wertetabelle[i][0]), Coordinates.yCorToPixl(QuadCore.wertetabelle[i][1]), 2, 2);
 			System.out.println(i);
 
 		}
 		
 		
-		// print Dot
+		// print the zero red Dot
 		g.setColor(Color.red);
 		g.drawRect(249, 249, 2, 2);
 		

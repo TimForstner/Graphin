@@ -1,6 +1,8 @@
 package kernel;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 
@@ -43,18 +45,6 @@ public class Cpu {
 			System.out.println("x= "+wertetabelle[i][0]+ " : y= "+wertetabelle[i][1]);
 		}
 		
-        JFrame jf = new JFrame("Graph");
-        Zeichnung l = new Zeichnung();
-       
-        jf.setSize(515, 540);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.setLayout(null);
-        jf.setLocationRelativeTo(null);
-        jf.setContentPane(l);
-        jf.setBounds(0, 0, 505, 530);
-       
-        jf.setVisible(true);
-		
 		harald.close();
 	}
 	
@@ -64,10 +54,19 @@ public class Cpu {
 		
 		String x = wertetabelle2[i][0] + "";
 		String fMitPunkt = funktion_raw.replace(',', '.');
+		System.out.println(fMitPunkt);
+		Pattern pattern = Pattern.compile("[x]\\^(\\d)");
+		Matcher matcher = pattern.matcher(fMitPunkt);
+		if (matcher.find()) {
+			System.out.println("HIER: " + matcher.group());
+			String[] potenz = matcher.group().split("");
+			
+			
+		}
+//		String fMitX = fMitPunkt.replaceAll("x^\\d", newChar)
 		String fMitX = fMitPunkt.replaceAll("x", "@*@"+x+"!");
 		String[] rechung = fMitX.split("!");
 		System.out.println(fMitX);
-		
 		return rechung;
 		
 //		1,8x+7x-3
